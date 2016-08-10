@@ -1,4 +1,5 @@
 FROM buildpack-deps:jessie-curl
+MAINTAINER Arkka Dhiratara <arkka.d@gmail.com>
 
 RUN gpg \
     --keyserver hkp://ha.pool.sks-keyservers.net \
@@ -10,6 +11,7 @@ RUN wget -q https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERS
     gpg --batch --verify influxdb_${INFLUXDB_VERSION}_amd64.deb.asc influxdb_${INFLUXDB_VERSION}_amd64.deb && \
     dpkg -i influxdb_${INFLUXDB_VERSION}_amd64.deb && \
     rm -f influxdb_${INFLUXDB_VERSION}_amd64.deb*
+COPY types.db /usr/share/collectd/types.db
 COPY influxdb.conf /etc/influxdb/influxdb.conf
 
 EXPOSE 8083 8086 8096/udp 2003

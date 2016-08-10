@@ -1,4 +1,5 @@
 FROM alpine:3.4
+MAINTAINER Arkka Dhiratara <arkka.d@gmail.com>
 
 ENV INFLUXDB_VERSION 1.0.0-beta3
 RUN apk add --no-cache --virtual .build-deps wget gnupg tar ca-certificates && \
@@ -15,6 +16,7 @@ RUN apk add --no-cache --virtual .build-deps wget gnupg tar ca-certificates && \
     cp -a /usr/src/influxdb-*/* /usr/bin/ && \
     rm -rf *.tar.gz* /usr/src /root/.gnupg && \
     apk del .build-deps
+COPY types.db /usr/share/collectd/types.db
 COPY influxdb.conf /etc/influxdb/influxdb.conf
 
 EXPOSE 8083 8086 8096/udp 2003
