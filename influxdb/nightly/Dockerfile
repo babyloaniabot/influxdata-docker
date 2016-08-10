@@ -11,7 +11,7 @@ RUN wget -q https://dl.influxdata.com/influxdb/nightlies/influxdb_nightly_amd64.
     rm -f influxdb_nightly_amd64.deb*
 COPY influxdb.conf /etc/influxdb/influxdb.conf
 
-EXPOSE 8083 8086
+EXPOSE 8083 8086 8096/udp 2003
 
 VOLUME /var/lib/influxdb
 

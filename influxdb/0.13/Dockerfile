@@ -12,7 +12,7 @@ RUN wget -q https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERS
     rm -f influxdb_${INFLUXDB_VERSION}_amd64.deb*
 COPY influxdb.conf /etc/influxdb/influxdb.conf
 
-EXPOSE 8083 8086
+EXPOSE 8083 8086 8096/udp 2003
 
 VOLUME /var/lib/influxdb
 

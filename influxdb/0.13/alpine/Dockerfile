@@ -17,7 +17,7 @@ RUN apk add --no-cache --virtual .build-deps wget gnupg tar ca-certificates && \
     apk del .build-deps
 COPY influxdb.conf /etc/influxdb/influxdb.conf
 
-EXPOSE 8083 8086
+EXPOSE 8083 8086 8096/udp 2003
 
 VOLUME /var/lib/influxdb
 
