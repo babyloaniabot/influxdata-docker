@@ -19,7 +19,17 @@ RUN apk add --no-cache --virtual .build-deps wget gnupg tar ca-certificates && \
 COPY types.db /usr/share/collectd/types.db
 COPY influxdb.conf /etc/influxdb/influxdb.conf
 
-EXPOSE 8083 8086 8096/udp 2003
+# Admin server WebUI
+EXPOSE 8083
+
+# HTTP API
+EXPOSE 8086
+
+# COLLECTD
+EXPOSE 8096/udp
+
+# GRAPHITE
+EXPOSE 2003
 
 VOLUME /var/lib/influxdb
 
